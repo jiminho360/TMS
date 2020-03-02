@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2020 at 02:51 PM
+-- Generation Time: Mar 02, 2020 at 05:14 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -86,7 +86,10 @@ CREATE TABLE `e_sub_task` (
 INSERT INTO `e_sub_task` (`id`, `task_id`, `name`, `Status`, `created_at`, `updated_at`) VALUES
 (1, 25, 'new', 'Done', '2020-02-13 10:57:51', '2020-02-13 18:57:50'),
 (3, 25, 'jimmy', 'Done', '2020-02-15 12:52:53', '2020-02-15 23:52:53'),
-(4, 28, 'hi', 'Done', '2020-02-15 12:56:07', '2020-02-15 23:56:07');
+(4, 28, 'hi', 'Done', '2020-02-15 12:56:07', '2020-02-15 23:56:07'),
+(5, 28, 'bnv', 'Done', '2020-02-17 17:00:05', '2020-02-18 04:00:05'),
+(6, 28, 'jkui', 'Done', '2020-02-19 16:34:33', '2020-02-20 03:34:33'),
+(7, 28, 'jkukj', 'Done', '2020-02-19 16:35:31', '2020-02-20 03:35:31');
 
 -- --------------------------------------------------------
 
@@ -186,7 +189,7 @@ INSERT INTO `role_user` (`id`, `user_id`, `role_id`) VALUES
 
 CREATE TABLE `tasks` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `priority` varchar(10) NOT NULL,
   `department_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
@@ -205,9 +208,13 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`id`, `name`, `priority`, `department_id`, `user_id`, `description`, `Status`, `created_by`, `startDate`, `endDate`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(25, 'ongea', 'High', 1, 3, 'ASAP', '1', 7, '2020-02-10', '2020-02-15', '2020-02-10 19:16:09', '2020-02-15 23:53:25', NULL),
-(26, 'Fua', 'High', 1, 3, 'NOW', '1', 7, '2020-02-10', '2020-02-14', '2020-02-10 23:42:20', '2020-02-15 22:30:50', NULL),
-(28, 'wow', 'High', 1, 3, 'wow', '0', 7, '2020-02-13', '2020-02-27', '2020-02-13 22:31:28', '2020-02-13 22:31:28', NULL);
+(25, 'ongea', 'High', 1, 3, 'ASAP', '1', 7, '2020-02-10', '2020-02-15', '2020-02-10 19:16:09', '2020-02-20 04:09:29', '2020-02-20 04:09:29'),
+(26, 'Fua', 'High', 1, 3, 'NOW', '1', 7, '2020-02-10', '2020-02-14', '2020-02-10 23:42:20', '2020-02-20 04:09:34', '2020-02-20 04:09:34'),
+(28, 'wow', 'High', 1, 3, 'wow', '1', 7, '2020-02-13', '2020-02-27', '2020-02-13 22:31:28', '2020-02-20 04:09:25', '2020-02-20 04:09:25'),
+(30, 'new', 'High', 1, 3, 'new', '1', 7, '2020-02-19', '2020-02-24', '2020-02-20 04:10:45', '2020-03-03 03:01:52', NULL),
+(31, 'Niaje Mwamba', 'High', 1, 3, 'jiminho hapaaa', '0', 3, '2020-03-02', '2020-03-10', '2020-03-03 03:03:17', '2020-03-03 03:09:25', '2020-03-03 03:09:25'),
+(32, 'Review the Mail', 'High', 3, 7, 'Review it ASAP', '0', 3, '2020-03-02', '2020-03-10', '2020-03-03 03:06:19', '2020-03-03 03:06:19', NULL),
+(33, 'HHH', 'High', 1, 3, 'FFFFFFFFFFFFFFFFFFFFFFFFF', '0', 3, '2020-03-02', '2020-03-09', '2020-03-03 03:07:58', '2020-03-03 03:09:20', '2020-03-03 03:09:20');
 
 -- --------------------------------------------------------
 
@@ -222,7 +229,7 @@ CREATE TABLE `users` (
   `last_name` text NOT NULL,
   `department_id` int(10) UNSIGNED NOT NULL,
   `phone_no` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `avatar` varchar(100) NOT NULL DEFAULT 'default.jpg',
   `remember_token` varchar(100) DEFAULT NULL,
@@ -236,11 +243,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `middle_name`, `last_name`, `department_id`, `phone_no`, `email`, `password`, `avatar`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(3, 'Peter', 'Audiface', 'Kibala', 1, '0768984763', 'peter@gmail.com', '$2y$10$6UMfiNUzkvxOc2LTafd3HOL0.HRjG58Piql1ujQQPfLA/XxQgKeX.', '1579619019.jpg', 'cGdQTyP6VBQOBK4JZqUsxcYMMM4tWJtyd1BbqBqNLaPMJXudOo8uihY0UNoF', '2019-10-04 16:55:30', '2020-01-21 23:03:39', NULL),
-(4, 'Hamidu', 'Rajabu', 'Kobelo', 1, '0768456382', 'hamidu@gmail.com', '$2y$10$TdfQBB.1kc79Xbw03r3/NuCk47t1P4d/L9BCEQLR029/CdpMDophm', '1579549614.jpg', 'eVro8CnzuugdC90ENb66sr2AUDiB4xrxubmZVOWwZuaJGDqQcLhUMkJzFPUi', '2019-10-05 12:18:33', '2020-01-21 03:46:55', NULL),
+(3, 'James', 'Paul', 'Kilenga', 1, '0768984763', 'jiminho360@gmail.com', '$2y$10$6UMfiNUzkvxOc2LTafd3HOL0.HRjG58Piql1ujQQPfLA/XxQgKeX.', '1579619019.jpg', 'zSz46ThHEyUjkZiNx3bLgJhtB6AM5HssAoXa4mlDfsyJJqkkIuPScUhTluX7', '2019-10-04 16:55:30', '2020-01-21 23:03:39', NULL),
+(4, 'Hamidu', 'Rajabu', 'Kobelo', 1, '0768456382', 'hamidu@gmail.com', '$2y$10$TdfQBB.1kc79Xbw03r3/NuCk47t1P4d/L9BCEQLR029/CdpMDophm', '1582128838.jpg', 'H9zVwdbhNvH0AQnWwO1v4hOxxtTmapeondrJd9E4jHSt7LctMMgbDobGqJky', '2019-10-05 12:18:33', '2020-02-20 03:13:58', NULL),
 (5, 'Joyce', 'Charles', 'Kibendo', 2, '0786953895', 'joy@gmail.com', '$2y$10$6UMfiNUzkvxOc2LTafd3HOL0.HRjG58Piql1ujQQPfLA/XxQgKeX.', '1580188110.png', '2CD8Gy085Z7cBvxPi9PYMt3kiTl96X7HBzoMP1Pp3wtPWn2Em9dmGcngwLw0', '2019-10-05 12:19:44', '2020-01-28 13:08:34', NULL),
 (6, 'Joel', 'Jackson', 'Mushi', 2, '0684924533', 'joel@gmail.com', '$2y$10$kjmG9EIKl2B5hgXbe330Z.HjUCcdnyChtxoLtsT.ozrrqTUiE/NMu', '1579549650.jpg', 'v81mUkFxv7H4ZlV6qohIdKFiCHoR8jt6kPwXX4dFtto04z0TxSssqLdG4GEt', '2019-10-05 12:20:30', '2020-01-21 03:47:30', NULL),
-(7, 'Hawa', 'Hamisi', 'Rajabu', 3, '0786546372', 'hawa@gmail.com', '$2y$10$evDknAptwcVn4aMY4TxHdeN6xmsXF1XMXPzQ806Kyq3sv1i.xFYha', '1581066467.png', 'aUCjVyqzO6OMM6WodbPtFDBX8jcxre8hOr9gIQw89VjCtSBpWxYbfuTcGSB3', '2019-10-05 13:10:48', '2020-02-07 17:07:48', NULL),
+(7, 'Godfrey', 'Bahati', 'Charles', 3, '0786546372', 'godfreybahati14@gmail.com', '$2y$10$evDknAptwcVn4aMY4TxHdeN6xmsXF1XMXPzQ806Kyq3sv1i.xFYha', '1581066467.png', '9PCMTYiQzHfv1nrt39hM74nRFmZgqVUkdu7LQesI1LSOKYoqyIw7FfobzJo9', '2019-10-05 13:10:48', '2020-02-07 17:07:48', NULL),
 (11, 'John', 'Paul', 'Richard', 4, '0789654372', 'john@gmail.com', '$2y$10$IXIXj/Z4mObDOB7cQTx/Mug0VrLRVSfRAp6DSci2bkZ3eeRxP03oC', 'default.jpg', '8Yd4QXIkfoUBtxYl86l4tkBWfjh1yyjnvDzoXkG6dnZj1c24AVxuI44DdjGd', '2020-02-11 18:45:04', '2020-02-11 18:45:04', NULL);
 
 --
@@ -337,7 +344,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `e_sub_task`
 --
 ALTER TABLE `e_sub_task`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -373,7 +380,7 @@ ALTER TABLE `role_user`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `users`
