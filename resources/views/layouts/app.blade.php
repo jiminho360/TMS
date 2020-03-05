@@ -13,6 +13,7 @@
 
     <!-- Bootstrap -->
     <link href="{{asset('asset/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link href="{{asset('asset/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 
@@ -24,20 +25,28 @@
     <link href="{{asset('asset/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}"
           rel="stylesheet">
     <link href="{{asset('asset/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
+
     <!-- Site Theme Style -->
     <link href="{{asset('asset/build/css/site.css')}}" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('asset/build/css/custom.css')}}">
+
     <!-- Date Picker -->
     <link rel="stylesheet" href="{{asset('asset/build/css/datepicker.css')}}" type="text/css">
+
     <!-- Sweet Alert CSS -->
     <link href="{{asset('asset/sweetAlert/sweetalert.css')}}" rel="stylesheet">
+
     <!-- Select 2 -->
     <link rel="stylesheet" href="{{asset('asset/vendors/select2/dist/css/select2.css')}}">
+
     <!-- NProgress -->
     <link href="{{asset('asset/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+
     <!-- iCheck -->
     <link href="{{asset('asset/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
+
     @yield('Styles')
 
 </head>
@@ -70,19 +79,19 @@
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
                         <ul class="nav side-menu">
-                            @if(auth()->user()->hasRole('User'))
+                            @if(auth()->user()->hasRole('User') || auth()->user()->hasRole('Admin'))
                                 <li><a><i class="fa fa-dashboard"></i>Dashboard<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{'dashboard_tasksAssign'}}">Task Assign Dashboard</a></li>
                                         <li><a href="{{'dashboard_myTask'}}">My Task Dashboard</a></li>
+                                        <li><a href="{{'dashboard_tasksAssign'}}">Task Assign Dashboard</a></li>
                                     </ul>
                                 </li>
                             @endif
-                                @if(!auth()->user()->hasRole('User'))
-                            <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
-                            </li>
-                                @endif
-                            @if(auth()->user()->hasRole('User'))
+{{--                                @if(!auth()->user()->hasRole('User'))--}}
+{{--                            <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>--}}
+{{--                            </li>--}}
+{{--                                @endif--}}
+                            @if(auth()->user()->hasRole('User') || auth()->user()->hasRole('Admin'))
 
                                 <li><a><i class="fa fa-book"></i>Tasks<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
@@ -115,16 +124,16 @@
                                     </ul>
                                 </li>
                             @endif
-                            @if(auth()->user()->hasRole('Admin'))
-                                <li><a><i class="fa fa-book"></i>Tasks<span
-                                            class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="{{url('employee-task')}}">Tasks Lists</a></li>
-                                        <li><a href="{{url('Completed')}}">Complete</a></li>
-                                        <li><a href="{{url('NotCompleted')}}">InComplete</a></li>
-                                    </ul>
-                                </li>
-                            @endif
+{{--                            @if(auth()->user()->hasRole('Admin'))--}}
+{{--                                <li><a><i class="fa fa-book"></i>Tasks<span--}}
+{{--                                            class="fa fa-chevron-down"></span></a>--}}
+{{--                                    <ul class="nav child_menu">--}}
+{{--                                        <li><a href="{{url('employee-task')}}">Tasks Lists</a></li>--}}
+{{--                                        <li><a href="{{url('Completed')}}">Complete</a></li>--}}
+{{--                                        <li><a href="{{url('NotCompleted')}}">InComplete</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+{{--                            @endif--}}
                             {{--@if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))--}}
                             @if(auth()->user()->hasRole('Admin'))
                                 <div class="menu_section">

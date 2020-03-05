@@ -91,4 +91,14 @@ class Task extends Model
         return self::where([['user_id', $user_id], ['status', 1]])->whereMonth('created_at',$month)
             ->whereYear('created_at',$year)->get()->count();
     }
+    public static function inCompleteTaskByMonth($user_id,$month,$year)
+    {
+        return self::where([['user_id', $user_id], ['status', 0]])->whereMonth('created_at',$month)
+            ->whereYear('created_at',$year)->get()->count();
+    }
+    public static function TaskByMonth($user_id,$month,$year)
+    {
+        return self::where('user_id', $user_id)->whereMonth('created_at',$month)
+            ->whereYear('created_at',$year)->get()->count();
+    }
 }

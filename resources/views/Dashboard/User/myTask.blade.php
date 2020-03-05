@@ -35,66 +35,173 @@
             </div>
         </div>
 
+        <div class="x_title">
+            <div class="clearfix"></div>
+        </div>
 
-        <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
+        <div class="col-md-8 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Task Summary</h2>
                     <div class="clearfix"></div>
                 </div>
-                <div class="x_content col-md-12" style="height: 40vh">
+                <div class="x_content col-md-6" style="height:40vh">
                     <canvas id="myChart" height="120vh"></canvas>
                 </div>
             </div>
         </div>
+        <div class="col-sm-offset-6">
+            <div class="x_panel" style="width: 60%">
+                <div class="x_title">
+                    <h2>Overdue Tasks</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content col-sm-2">
+{{--                    <table>--}}
+{{--                        <div class="x_title">--}}
+{{--                            <div class="clearfix"></div>--}}
+{{--                        </div>--}}
+{{--                        <tr>--}}
+{{--                            <td></td>--}}
+{{--                        </tr>--}}
+{{--                        <div class="x_title">--}}
+{{--                            <div class="clearfix"></div>--}}
+{{--                        </div>--}}
+{{--                        <tr>--}}
+{{--                            <td>Total</td>--}}
+{{--                            <td>....</td>--}}
+{{--                        </tr>--}}
+{{--                    </table>--}}
+                      <table class="table table-bordered table-condensed">
+                                    <tbody>
+                                    <tr>
+                                        <td width="55%">January</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>February</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>March</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>April</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>May</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>June</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>July</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>August</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>September</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>October</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>November</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>December</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total</strong></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                </div>
+            </div>
+
+        </div>
+
 
     </div>
 @endsection
 @section('Scripts')
     <script>
 
-
         new Chart(document.getElementById('myChart'), {
             type: 'bar',
             data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [
+                    {
+                        label: 'Task',
+                        data: [<?= $janTask ?>,<?= $febTask ?> ,<?= $marTask ?>, <?= $aprTask ?>,
+                            <?= $mayTask ?>,<?= $junTask ?>,<?= $julTask ?>,<?= $augTask ?>,
+                            <?= $sepTask ?>,<?= $octTask ?>,<?= $novTask ?>,<?= $decTask ?>],
+                        backgroundColor: [
+                            '#299b74',
+                            '#299b74',
+                            '#299b74',
+                            '#299b74',
+                            '#299b74',
+                            '#299b74',
+                            '#299b74',
+                            '#299b74',
+                            '#299b74',
+                            '#299b74',
+                            '#299b74',
+                            '#299b74'
+                        ]
+                    },
                     {
                         label: 'Complete',
                         data: [<?= $janCompleteTask ?>,<?= $febCompleteTask ?> ,<?= $marCompleteTask ?>, <?= $aprCompleteTask ?>,
                             <?= $mayCompleteTask ?>,<?= $junCompleteTask ?>,<?= $julCompleteTask ?>,<?= $augCompleteTask ?>,
                             <?= $sepCompleteTask ?>,<?= $octCompleteTask ?>,<?= $novCompleteTask ?>,<?= $decCompleteTask ?>],
                         backgroundColor: [
-                            '#FF6384',
-                            '#FF6384',
-                            '#FF6384',
-                            '#FF6384',
-                            '#FF6384',
-                            '#FF6384',
-                            '#FF6384',
-                            '#FF6384',
-                            '#FF6384',
-                            '#FF6384',
-                            '#FF6384',
-                            '#FF6384'
+                            '#0db7eb',
+                            '#0db7eb',
+                            '#0db7eb',
+                            '#0db7eb',
+                            '#0db7eb',
+                            '#0db7eb',
+                            '#0db7eb',
+                            '#0db7eb',
+                            '#0db7eb',
+                            '#0db7eb',
+                            '#0db7eb',
+                            '#0db7eb'
                         ]
                     },
                     {
                         label: 'Incomplete',
-                        data: [4,5,6],
+                        data: [<?= $janInCompleteTask ?>,<?= $febInCompleteTask ?> ,<?= $marInCompleteTask ?>, <?= $aprInCompleteTask ?>,
+                            <?= $mayInCompleteTask ?>,<?= $junInCompleteTask ?>,<?= $julInCompleteTask ?>,<?= $augInCompleteTask ?>,
+                            <?= $sepInCompleteTask ?>,<?= $octInCompleteTask ?>,<?= $novInCompleteTask ?>,<?= $decInCompleteTask ?>],
                         backgroundColor: [
-                            '#36A2EB',
-                            '#36A2EB',
-                            '#36A2EB'
-                        ]
-                    },
-                    {
-                        label: 'Total',
-                        data: [4,5,6],
-                        backgroundColor: [
-                            '#2aeb2e',
-                            '#2aeb2e',
-                            '#2aeb2e'
+                            '#21d5eb',
+                            '#21d5eb',
+                            '#21d5eb',
+                            '#21d5eb',
+                            '#21d5eb',
+                            '#21d5eb',
+                            '#21d5eb',
+                            '#21d5eb',
+                            '#21d5eb',
+                            '#21d5eb',
+                            '#21d5eb',
+                            '#21d5eb'
                         ]
                     }
                 ]
